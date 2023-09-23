@@ -1,2 +1,6 @@
 .venv_prezpal
 .slides
+.secret
+.env
+wav2vec2-base-960
+wav2vec2-base-960.mat
