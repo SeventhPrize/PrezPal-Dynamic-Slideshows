@@ -1,6 +1,6 @@
 classdef VoiceCommand
     properties
-        ampThreshold = 0.2;
+        ampThreshold = 0.001;
         timeThreshold = 1;
         deviceReader
         fileWriter
@@ -15,6 +15,7 @@ classdef VoiceCommand
         function wav = collectVoice(obj)
             while true
                 lastPoll = obj.deviceReader();
+                % disp(max(abs(lastPoll)))
                 if max(abs(lastPoll)) > obj.ampThreshold
                     wav = lastPoll;
                     tic
@@ -35,7 +36,6 @@ classdef VoiceCommand
         function transcript_text = transcribe(obj, wav)
             wav = wav(1 : find(wav > obj.ampThreshold, 1, "last"));
             transcript_text = "";
-            disp(length(wav))
             try
                 obj.fileWriter(wav);
                 [y, fs] = audioread("output.wav");

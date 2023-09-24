@@ -49,11 +49,19 @@ classdef PrezPal
             open(ppt);
             if (slideJson.Content1 == "None") && (slideJson.Content2 == "None")
                 slide = add(ppt, 'Section Header');
-                add(slide, Picture("prettify/PrezPal_SectionHeader.jpg"))
+                bg = add(slide, Picture("prettify/PrezPal_SectionHeader.png"));
+                bg.X = "0px";
+                bg.Y = "0px";
+                bg.Width = "13.3in";
+                bg.Height = "7.5in";
                 replace(slide, "Text", " ")
             elseif (slideJson.Content2 == "None")
                 slide = add(ppt, "Title and Content");
-                add(slide, Picture("prettify/PrezPal_Reg_Var1.jpg"))
+                bg = add(slide, Picture("prettify/PrezPal_Reg.png"));
+                bg.X = "0px";
+                bg.Y = "0px";
+                bg.Width = "13.3in";
+                bg.Height = "7.5in";
                 try
                     replace(slide, "Content", Picture(slideJson.Content1))
                 catch
@@ -61,7 +69,11 @@ classdef PrezPal
                 end
             else
                 slide = add(ppt, "Two Content");
-                add(slide, Picture("prettify/PrezPal_Comparison.jpg"))
+                bg = add(slide, Picture("prettify/PrezPal_Comparison.png"));
+                bg.X = "0px";
+                bg.Y = "0px";
+                bg.Width = "13.3in";
+                bg.Height = "7.5in";
                 try
                     replace(slide, "Left Content", Picture(slideJson.Content1))
                 catch
