@@ -13,3 +13,7 @@ We made full use of MATLAB functionality, utilizing tools from the Audio, Deep L
 We want to have live data analysis. As part of the voice command, the presenter should be able to request PrezPal to perform small data analysis tasks on some given dataset and show the resulting figures in the next slide. The code would be written by generative language models.
 We want PrezPal to be able to anticipate slides based on presentation context instead of explicit voice commands for an even smoother experience.
 We want to engage with PowerPoint features other than images and text, like videos and animation.
+
+## See also
+Devpost: [https://devpost.com/software/prezpal](https://devpost.com/software/prezpal)
+YouTube: [https://www.youtube.com/watch?v=nV2BFURIWzI](https://www.youtube.com/watch?v=nV2BFURIWzI)
