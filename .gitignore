@@ -2,3 +2,5 @@
 *.asv
 output.wav
 decrecated_testing
+wav2vec2-base-960.mat
+wav2vec2-base-960-license.txt
