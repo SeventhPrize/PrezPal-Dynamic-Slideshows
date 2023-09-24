@@ -30,13 +30,13 @@ classdef PrezPal
                 example = [struct("role", "user", ...
                     "content", obj.ppFewShot.Prompt(row)),
                     struct("role", "assistant", ...
-                    "content", strcat("'{", '"Title":', ...
+                    "content", strcat("{", '"Title":', ...
                     string(obj.ppFewShot.Title(row)), ...
                     ', "Content1":', ...
                     string(obj.ppFewShot.Content1(row)), ...
                     ', "Content2":', ...
                     string(obj.ppFewShot.Content2(row)), ...
-                    "}'"))];
+                    "}"))];
                 msg = vertcat(msg, example);
             end
             msg = vertcat(msg, [struct("role", "user", ...
@@ -49,24 +49,27 @@ classdef PrezPal
             open(ppt);
             if (slideJson.Content1 == "None") && (slideJson.Content2 == "None")
                 slide = add(ppt, 'Section Header');
+                add(slide, Picture("prettify/PrezPal_SectionHeader.jpg"))
                 replace(slide, "Text", " ")
             elseif (slideJson.Content2 == "None")
                 slide = add(ppt, "Title and Content");
-                if ismember(slideJson.Content1, obj.ppImageList)
+                add(slide, Picture("prettify/PrezPal_Reg_Var1.jpg"))
+                try
                     replace(slide, "Content", Picture(slideJson.Content1))
-                else
+                catch
                     replace(slide, "Content", slideJson.Content1)
                 end
             else
                 slide = add(ppt, "Two Content");
-                if ismember(slideJson.Content1, obj.ppImageList)
+                add(slide, Picture("prettify/PrezPal_Comparison.jpg"))
+                try
                     replace(slide, "Left Content", Picture(slideJson.Content1))
-                else
+                catch
                     replace(slide, "Left Content", slideJson.Content1)
                 end
-                if ismember(slideJson.Content2, obj.ppImageList)
+                try
                     replace(slide, "Right Content", Picture(slideJson.Content2))
-                else
+                catch
                     replace(slide, "Right Content", slideJson.Content2)
                 end
             end
