@@ -26,10 +26,13 @@ while true
         end
         wav = wav(1 : find(wav > AMP_THRESHOLD, 1, "last"));
         if length(wav) > 2 * length(lastPoll)
-            fileWriter(wav);
-            [y, fs] = audioread("output.wav");
-            soundsc(y, fs)
-            transcript = speech2text(transcriber, y, fs)
+            try
+                fileWriter(wav);
+                [y, fs] = audioread("output.wav");
+                soundsc(y, fs)
+                transcript = speech2text(transcriber, y, fs)
+            catch
+            end
         end
         release(deviceReader)
         release(fileWriter)

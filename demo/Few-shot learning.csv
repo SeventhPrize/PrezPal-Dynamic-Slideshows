@@ -1,0 +1,6 @@
+﻿Prompt,Title,Content1,Content2
+make a slide about why the product is needed,"""Real-time slide generation enables presentation flexibility""","""Slides adapt to live audience responses and questions \nContent captures the most recent data \nSaves time spent on crafting Slides""","""None"""
+make a slide explaining how the product is operated,"""Create Slides On-Demand via Voice Command""","""demo/voice_command.png""","""Voice commands prompts offer minimalist, intuitive operation \nVoice commands do not distract the presenter or audience"""
+reveal that this entire slideshow was made using prezpal,"""This presentation was made using PrezPal!""","""None""","""None"""
+make a slide explaining how data science contributed to this project,"""Data Science Workflow""","""demo/data_science_flowchart.png""","""None"""
+slide describing future directions and features for the product,"""Future PrezPal Features""","""Interact with more presentation structures \nOptimize slide creation speed \nLive data analysis""","""None"""

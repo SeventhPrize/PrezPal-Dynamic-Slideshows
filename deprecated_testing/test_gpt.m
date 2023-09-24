@@ -22,9 +22,6 @@ parameters = struct("model", "gpt-3.5-turbo", ...
 headers = matlab.net.http.HeaderField('Content-Type', 'application/json');
 headers(2) = matlab.net.http.HeaderField('Authorization', ["Bearer " + api_key]);
 
-% Define body for API request
-body = matlab.net.http.MessageBody(struct)
-
 % Define the request message
 request = matlab.net.http.RequestMessage('post', headers, parameters);
 
