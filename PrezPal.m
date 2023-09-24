@@ -3,13 +3,15 @@ classdef PrezPal
         pptxPath
         ppSummary
         ppImageList
+        ppFewShot
         generatingSlidesPptx = "GeneratingSlideDummy.pptx";
     end
     methods
-        function obj = PrezPal(pptxPath, ppSummary, ppImageList)
+        function obj = PrezPal(pptxPath, ppSummary, ppImageList, ppFewShot)
             obj.pptxPath = pptxPath;
             obj.ppSummary = ppSummary;
             obj.ppImageList = ppImageList;
+            obj.ppFewShot = ppFewShot;
             pptview(obj.generatingSlidesPptx)
             pptview(obj.pptxPath)
         end
@@ -23,9 +25,22 @@ classdef PrezPal
         end
         function msg = buildPrompt(obj, prompt)
             msg = [struct("role", "system", ...
-                "content", obj.buildSystemPrompt()),
-                struct("role", "user", ...
-                "content", prompt)];
+                "content", obj.buildSystemPrompt())];
+            for row = 1 : height(obj.ppFewShot)
+                example = [struct("role", "user", ...
+                    "content", obj.ppFewShot.Prompt(row)),
+                    struct("role", "assistant", ...
+                    "content", strcat("'{", '"Title":', ...
+                    string(obj.ppFewShot.Title(row)), ...
+                    ', "Content1":', ...
+                    string(obj.ppFewShot.Content1(row)), ...
+                    ', "Content2":', ...
+                    string(obj.ppFewShot.Content2(row)), ...
+                    "}'"))];
+                msg = vertcat(msg, example);
+            end
+            msg = vertcat(msg, [struct("role", "user", ...
+                "content", prompt)]);
         end
         function addSlide(obj, slideJson)
             import mlreportgen.ppt.*

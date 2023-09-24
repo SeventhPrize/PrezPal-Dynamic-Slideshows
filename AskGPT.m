@@ -8,7 +8,7 @@ classdef AskGPT
         function obj = AskGPT()
             obj.api_endpoint = "https://api.openai.com/v1/chat/completions";
             obj.model_type = "gpt-3.5-turbo";
-            obj.max_tokens = 50;
+            obj.max_tokens = 750;
         end
         function responseContent = ask(obj, messages)
             parameters = struct("model", obj.model_type, ...
