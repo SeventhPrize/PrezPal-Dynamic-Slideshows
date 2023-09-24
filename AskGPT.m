@@ -45,6 +45,9 @@ classdef AskGPT
             % Receive response
             response = send(request, URI(obj.api_endpoint));
             responseContent = response.Body.Data.choices.message.content;
+            responseContent = string(extractBetween(responseContent, ...
+                strfind(responseContent, "{"), ...
+                strlength(responseContent)));
         end
     end
 end

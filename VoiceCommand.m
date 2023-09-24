@@ -90,7 +90,7 @@ classdef VoiceCommand
             text = obj.transcribe(obj.collectVoice());
 
             % Format to single string
-            text = strjoin(table2array(text), " ");
+            text = strjoin(table2array(text), " ")
 
             % Corrections
             if mod(count(text, '"'), 0) == 1
